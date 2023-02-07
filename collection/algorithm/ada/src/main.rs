@@ -1,6 +1,7 @@
 fn is_super(c: u8) -> bool {
     match c {
-        98 | 102 | 106 | 112 | 118 => true,
+        // 98 | 102 | 106 | 112 | 118 => true,
+        b'b' | b'f' | b'j' | b'p' | b'v' => true,
         _ => false,
     }
 }
