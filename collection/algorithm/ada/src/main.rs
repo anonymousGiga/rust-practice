@@ -1,6 +1,5 @@
 fn is_super(c: u8) -> bool {
     match c {
-        // 98 | 102 | 106 | 112 | 118 => true,
         b'b' | b'f' | b'j' | b'p' | b'v' => true,
         _ => false,
     }
@@ -26,11 +25,8 @@ fn process(input: String) {
 
         println!("begin: {:?}, end: {:?}", begin, end);
 
-        let tmp = s[end];
-        s[end] = s[begin];
-        s[begin] = tmp;
-
         if begin < end {
+            s.swap(begin, end);
             begin += 1;
             end -= 1;
         } else {
