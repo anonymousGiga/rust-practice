@@ -1,9 +1,14 @@
 use std::rc::Rc;
 
-// #[derive(Clone)]
+#[derive(Clone)]
 struct Sample;
 
+fn print_type_of<T>(_: &T) {
+    println!("{}", std::any::type_name::<T>())
+}
+
 fn foo<X>(_x: X) {
+    print_type_of(&_x);
     match std::mem::size_of::<X>() {
         0 => println!("0"),
         _ => {
