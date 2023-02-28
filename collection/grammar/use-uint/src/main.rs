@@ -9,10 +9,14 @@ impl std::ops::BitAnd<S> for () {
 }
 
 fn main() {
-    let f = || ( () & S(1) );
-    let g = || { () & S(2) };
-    let h = || ( {} & S(3) );
-    let i = || { {} & S(4) };
+    let f = || (() & S(1));
+    let g = || () & S(2);
+    // let h = || ( {} & S(3) );
+    let h = || {} & S(3);
+    let i = || {
+        {}
+        &S(4)
+    };
     f();
     g();
     h();

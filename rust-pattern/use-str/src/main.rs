@@ -1,3 +1,5 @@
+use std::ops::Deref;
+
 fn print_use_string(word: String) {
     println!("{:?}", word);
 }
@@ -29,6 +31,8 @@ fn main() {
 
 
 
+    let a: Vec<u8> = vec![1, 2, 3, 4];
+    let b = a.deref();
 
 
 
