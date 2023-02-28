@@ -3,6 +3,8 @@ struct A(u8);
 impl Drop for A {
     fn drop(&mut self) {
         println!("A exit");
+        panic!("in drop");
+        println!("A exit2");
     }
 }
 
