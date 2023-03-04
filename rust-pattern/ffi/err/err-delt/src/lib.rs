@@ -1,5 +1,7 @@
 #![crate_type = "staticlib"]
 
+
+// 惯常做法一
 enum SimpleError {
     IOError = 1,
     FileCorrupted = 2,
@@ -11,6 +13,7 @@ impl From<SimpleError> for libc::c_int {
     }
 }
 
+// 惯常做法二
 enum SimpleError2 {
     IOError(String),
     FileCorrupted(String),
@@ -25,6 +28,7 @@ impl From<SimpleError2> for libc::c_int {
     }
 }
 
+// 惯常做法三
 struct SimpleError3 {
     expected: char,
     line: i32,
@@ -33,7 +37,7 @@ struct SimpleError3 {
 #[repr(C)]
 pub struct parse_error {
     pub expected: libc::c_char,
-    pub line: i32,
+    pub line: libc::c_int,
 }
 
 impl From<SimpleError3> for parse_error {
@@ -41,7 +45,7 @@ impl From<SimpleError3> for parse_error {
         let SimpleError3 { expected, line } = s;
         parse_error {
             expected: expected as libc::c_char,
-            line,
+            line: line as libc::c_int,
         }
     }
 }
