@@ -18,6 +18,13 @@ fn report_error<S: Into<String>>(err: S) -> Result<(), std::ffi::NulError> {
     unsafe {
         // SAFETY: whoops, this contains a dangling pointer!
         set_err(std::ffi::CString::new(err.into())?.as_ptr());
+        //我的理解等价于如下：
+        //let *mut ptr = null;
+        //{
+        //    let c_err = std::ffi::CString::new(err.into())?;
+        //    ptr = c_err.as_ptr();
+        //}
+        //set_err(ptr);
     }
     Ok(())
 }
