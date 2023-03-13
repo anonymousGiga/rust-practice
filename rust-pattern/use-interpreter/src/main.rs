@@ -38,9 +38,11 @@ pub fn main() {
     let mut postfix = String::new();
     intr.interpret(&mut postfix);
     assert_eq!(postfix, "23+");
+    println!("postfix: {:?}", postfix);
 
     intr = Interpreter::new("1-2+3-4");
     postfix.clear();
     intr.interpret(&mut postfix);
     assert_eq!(postfix, "12-3+4-");
+    println!("postfix: {:?}", postfix);
 }
