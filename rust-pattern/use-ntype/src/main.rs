@@ -7,6 +7,7 @@ struct StudentInfo {
     id: &'static str,
     number: &'static str,
 }
+
 impl StudentInfo {
     fn new(name: &'static str, id: &'static str, number: &'static str) -> Self {
         StudentInfo {
@@ -47,16 +48,19 @@ impl PersonInfo {
 
 struct Miles(f64);
 struct Kms(f64);
+#[derive(Debug)]
+struct Meter(u32);
 fn main() {
-    let s = StudentInfo {
-        name: "Alice",
-        id: "123456",
-        number: "001",
-    };
+    let s = StudentInfo::new("Alice", "123456", "001");
     let p = PersonInfo::new(s);
     println!("name: {:?}", p.name());
     println!("id: {:?}", p.id());
 
     let _m = Miles(10f64);
     let _kms = Kms(10f64);
+
+    let m = Meter(1u32);
+    let b = m;
+    println!("b: {:?}", b);
+    // println!("m: {:?}", m);
 }
