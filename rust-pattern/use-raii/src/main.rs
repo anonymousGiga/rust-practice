@@ -38,7 +38,7 @@ impl<T> MyMutex<T> {
 
 impl<T> Drop for MyMutex<T> {
     fn drop(&mut self) {
-        println!("unlock");
+        println!("MyMutex drop");
     }
 }
 
@@ -56,6 +56,7 @@ impl<'a, T> Deref for MyMutexGuard<'a, T> {
     type Target = T;
 
     fn deref(&self) -> &T {
+        println!("MyMutexGuard deref");
         &self.lock.data
     }
 }
@@ -63,22 +64,28 @@ impl<'a, T> Deref for MyMutexGuard<'a, T> {
 impl<'a, T> Drop for MyMutexGuard<'a, T> {
     fn drop(&mut self) {
         *self.lock.flag.borrow_mut() = false;
+        println!("MyMutexGuard drop");
     }
 }
 
 fn main() {
     let m = MyMutex::new(Foo);
-    {
-        println!("++++++++++");
-        let m1 = m.lock();
-        if let Err(e) = m.try_lock() {
-            println!("Can't get lock, err: {:?}", e);
-        }
-        println!("++++++++++");
-        m1.unwrap().do_something();
+    // {
+    println!("++++++++++");
+    // let m1 = m.lock().unwrap();
+    let m1 = m.lock();
+    if let Err(e) = m.try_lock() {
+        println!("Can't get lock, err: {:?}", e);
     }
     println!("++++++++++");
-    let m2 = m.lock();
-    m2.unwrap().do_something();
+    // m1.do_something();
+    // m1.unwrap().do_something();
+    let m1 = m1.unwrap();
+    m1.do_something();
+
+    // }
+    println!("++++++++++");
+    let m2 = m.lock().unwrap();
+    m2.do_something();
     println!("++++++++++");
 }
