@@ -22,12 +22,13 @@ pub struct TeacherBuilder {
 
 impl TeacherBuilder {
     pub fn new() -> Self {
-        TeacherBuilder {
-            name: "".to_string(),
-            age: "".to_string(),
-            gender: "".to_string(),
-            subject: "".to_string(),
-        }
+        // TeacherBuilder {
+        //     name: "".to_string(),
+        //     age: "".to_string(),
+        //     gender: "".to_string(),
+        //     subject: "".to_string(),
+        // }
+        TeacherBuilder::default()
     }
 
     pub fn name(mut self, name: String) -> Self {
