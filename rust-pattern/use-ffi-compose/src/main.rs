@@ -28,6 +28,9 @@ fn main() {
     let first = v[0];
     println!("first string: {:?}", first);
 
+    let second = v[1];
+    println!("second string: {:?}", second);
+
     println!("+++++++++++++++++++++++++");
     // 下面的方式为：对象的所有可能的交互都被放入一个“封装器类型”中
     let a = "hello".to_string();
