@@ -8,6 +8,6 @@
 // 推荐的方式： 明确制定拒绝的lint
 #![deny(unused_variables)]
 fn main() {
-    let a = "hello";
+    let _a = "hello";
     println!("Hello, world!");
 }
