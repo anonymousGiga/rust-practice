@@ -20,19 +20,19 @@ fn func2(i: u64) {
     let _guard = LocalSpan::enter_with_local_parent("func2");
     std::thread::sleep(Duration::from_millis(i));
 
-    minitrace::set_reporter(MyReporter2, Config::default());
+    // minitrace::set_reporter(MyReporter2, Config::default());
 
-    let root = Span::root("root1", SpanContext::random());
-    {
-        let _guard = root.set_local_parent();
+    // let root = Span::root("root1", SpanContext::random());
+    // {
+    //     let _guard = root.set_local_parent();
 
-        let _guard = LocalSpan::enter_with_local_parent("print1");
+    //     let _guard = LocalSpan::enter_with_local_parent("print1");
 
-        for _ in 0..5 {
-            println!("++++++");
-        }
-    }
-    minitrace::flush();
+    //     for _ in 0..5 {
+    //         println!("++++++");
+    //     }
+    // }
+    // minitrace::flush();
 }
 
 #[trace]
@@ -40,53 +40,55 @@ fn func3(i: u64) {
     std::thread::sleep(Duration::from_millis(i));
 }
 
-fn test() {
+fn test(cnt: u32) {
     minitrace::set_reporter(MyReporter2, Config::default());
 
     // let root = Span::root("root", SpanContext::random());
     let root = Span::root("root", SpanContext::random());
     {
-        // let _guard = root.set_local_parent();
+        // // let _guard = root.set_local_parent();
 
-        // let _guard = LocalSpan::enter_with_local_parent("func1-0");
-        let _guard = Span::enter_with_parent("func1-0", &root);
-        func1(30);
+        // // let _guard = LocalSpan::enter_with_local_parent("func1-0");
+        // let _guard = Span::enter_with_parent("func1-0", &root);
+        // func1(30);
 
-        // let _guard = LocalSpan::enter_with_local_parent("func2-0");
-        // func2(30);
+        if cnt == 1 || cnt == 4 {
+            let _guard = Span::enter_with_parent("func2-0", &root);
+        }
+        // // let _guard = LocalSpan::enter_with_local_parent("func2-0");
+        func2(3000);
 
-        // func3(300);
+        // if cnt == 3 {
+        //     let _guard = Span::enter_with_parent("func3-0", &root);
+        // }
     }
     minitrace::flush();
 }
 
-
 fn tt() {
     use minitrace::collector::Config;
-use minitrace::collector::ConsoleReporter;
-use minitrace::prelude::*;
+    use minitrace::collector::ConsoleReporter;
+    use minitrace::prelude::*;
 
-// minitrace::set_reporter(ConsoleReporter, Config::default());
+    // minitrace::set_reporter(ConsoleReporter, Config::default());
     minitrace::set_reporter(MyReporter, Config::default());
 
-{
-    let root_span = Span::root("root", SpanContext::random());
     {
-        let child_span = Span::enter_with_parent("print1", &root_span);
-        func1(30);
-
+        let root_span = Span::root("root", SpanContext::random());
+        {
+            let child_span = Span::enter_with_parent("print1", &root_span);
+            func1(30);
+        }
     }
-}
 
-minitrace::flush();
+    minitrace::flush();
 }
-
 
 fn main() {
     tracing_subscriber::fmt::init();
-    for _ in 0..10 {
-        test();
-    // tt();
+    for i in 0..8 {
+        test(i);
+        // tt();
     }
 }
 
@@ -98,9 +100,10 @@ impl Reporter for MyReporter {
             if v.name == "func3" {
                 info!(
                     target : "revm-test-sload",
-                    "v.name = {:?}, v.duration_ns = {:?}",
+                    "v.name = {:?}, v.duration_ns = {:?}, v.begin_time = {:?}",
                     v.name,
                     v.duration_ns,
+                    v.begin_time_unix_ns,
                 );
             }
         }
@@ -112,12 +115,13 @@ struct MyReporter2;
 impl Reporter for MyReporter2 {
     fn report(&mut self, spans: &[SpanRecord]) {
         for v in spans {
-                info!(
-                    target : "revm-test-sload",
-                    "v.name = {:?}, v.duration_ns = {:?}",
-                    v.name,
-                    v.duration_ns,
-                );
+            info!(
+                target : "revm-test-sload",
+                "v.name = {:?}, v.duration_ns = {:?}, v.begin_time = {:?}",
+                v.name,
+                v.duration_ns,
+                v.begin_time_unix_ns,
+            );
         }
     }
 }
