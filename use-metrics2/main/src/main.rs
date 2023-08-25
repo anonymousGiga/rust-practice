@@ -14,6 +14,37 @@ use metrics::{
 };
 use metrics::{Counter, CounterFn, Gauge, GaugeFn, Histogram, HistogramFn, Key, Recorder, Unit};
 
+use std::{
+    fs::File,
+    io::{BufRead, BufReader},
+    ops::Mul,
+};
+
+#[inline(always)]
+fn rdtsc() -> u64 {
+    unsafe { core::arch::x86_64::_rdtsc() }
+}
+
+fn get_cpu_frequency() -> Option<f64> {
+    let file = File::open("/proc/cpuinfo").unwrap();
+    let reader = BufReader::new(file);
+
+    for line in reader.lines() {
+        let line = line.unwrap();
+        if let Some(freq_str) = line.strip_prefix("cpu MHz\t\t: ") {
+            let frequency: f64 = freq_str.parse().unwrap();
+            return Some(frequency * 1e6);
+        }
+    }
+
+    None
+}
+
+fn cycles_to_nanoseconds(cycles: u64, frequency: f64) -> u64 {
+    let ns_per_cycle = 1_000_000_000 as f64 / frequency;
+    (cycles as f64 * ns_per_cycle) as u64
+}
+
 struct PrintHandle(Key);
 
 impl CounterFn for PrintHandle {
@@ -96,6 +127,8 @@ fn init_print_logger() {
 }
 
 fn main() {
+    let fre = get_cpu_frequency().unwrap();
+
     let server_name = "web03".to_string();
 
     init_print_logger();
@@ -122,15 +155,33 @@ fn main() {
     // let counter1 = register_counter!("test_counter");
     // counter1.increment(1);
     mylib::add(2, 2);
+    let start_time = rdtsc();
     let counter2 = register_counter!("test_counter", "type" => "absolute");
+    let end_time = rdtsc();
     counter2.absolute(42);
+    let end_time2 = rdtsc();
+    let cycles = end_time - start_time;
+    let elapsed_ns = cycles_to_nanoseconds(cycles, fre);
+    println!("elapsed_ns ===================== {:?}", elapsed_ns);
+    let cycles = end_time2 - end_time;
+    let elapsed_ns = cycles_to_nanoseconds(cycles, fre);
+    println!("elapsed_ns ===================== {:?}", elapsed_ns);
 
     let gauge1 = register_gauge!("test_gauge");
     gauge1.increment(1.0);
     let gauge2 = register_gauge!("test_gauge", "type" => "decrement");
     gauge2.decrement(1.0);
+    let start_time = rdtsc();
     let gauge3 = register_gauge!("test_gauge", "type" => "set");
+    let end_time = rdtsc();
     gauge3.set(3.1459);
+    let end_time2 = rdtsc();
+    let cycles = end_time - start_time;
+    let elapsed_ns = cycles_to_nanoseconds(cycles, fre);
+    println!("elapsed_ns ===================== {:?}", elapsed_ns);
+    let cycles = end_time2 - end_time;
+    let elapsed_ns = cycles_to_nanoseconds(cycles, fre);
+    println!("elapsed_ns ===================== {:?}", elapsed_ns);
 
     let histogram1 = register_histogram!("test_histogram");
     histogram1.record(0.57721);
