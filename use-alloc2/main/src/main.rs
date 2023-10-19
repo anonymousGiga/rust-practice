@@ -90,11 +90,17 @@ pub fn run_and_track3(name: &str, size: usize, allocator: &TrackingAllocator) {
         diff,
     } = alloc::stats();
     println!("{name},{size},{alloc},{dealloc},{diff}");
+
+    for i in 0..v1.len() {
+        v1.push(val);
+        println!("i: {:?}, val: {:?}", i, v1[i]);
+    }
+
     drop(v1);
     drop(v2);
     drop(v3);
 }
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, Debug)]
 pub struct DummyData {
     pub data: [u8; 100],
 }

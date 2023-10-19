@@ -1,10 +1,12 @@
 #[cfg(feature = "allocator-api2")]
 use allocator_api2::alloc::{AllocError, Allocator};
-
-use std::alloc::{GlobalAlloc, Layout, System};
+#[cfg(feature = "allocator-api2")]
+use std::alloc::{GlobalAlloc, System};
+#[cfg(feature = "allocator-api2")]
 use std::ptr::NonNull;
+#[cfg(feature = "allocator-api2")]
 use std::slice;
-
+use std::alloc::Layout;
 use std::sync::atomic::{AtomicUsize, Ordering::SeqCst};
 
 #[cfg(feature = "allocator-api2")]
