@@ -8,4 +8,6 @@ edition = "2021"
 [dependencies]
 hashbrown = "0.14.1"
 alloc = { path = "../alloc", features = ["allocator-api2"] }
+# alloc2 = { path = "../alloc2" }
+bumpalo = { version = "3.14.0", features = ["collections"] }
 rand = "0.8.5"

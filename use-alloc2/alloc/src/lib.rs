@@ -7,6 +7,9 @@ use std::slice;
 
 use std::sync::atomic::{AtomicUsize, Ordering::SeqCst};
 
+#[cfg(feature = "allocator-api2")]
+pub use allocator_api2::vec::Vec;
+
 static ALLOC: AtomicUsize = AtomicUsize::new(0);
 static DEALLOC: AtomicUsize = AtomicUsize::new(0);
 

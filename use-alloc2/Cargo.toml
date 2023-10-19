@@ -3,3 +3,4 @@ members = [
 	"alloc",
 	"main",
 ]
+# resolver = "1"
