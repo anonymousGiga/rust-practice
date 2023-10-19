@@ -1,0 +1,12 @@
+[package]
+name = "alloc"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# This dependency provides a version of the unstable nightly Rust `Allocator`
+# trait on stable Rust. Enabling this feature means that `alloc` will
+# implement its `Allocator` trait.
+allocator-api2 = { version = "0.2.8", default-features = false, optional = true }

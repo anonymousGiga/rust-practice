@@ -1,0 +1,267 @@
+total host function time(secs) ==> 557.050589289
+
+===============================Metric of instruction=====================
+Opcode                            total_times        spend_time(seconds)
+STOP                             1796058                   0.107976062
+ADD                             66669378                   1.295654732
+MUL                               811788                   0.015661732
+SUB                              3291093                   0.053219586
+DIV                             58467887            2.8110822779999998
+SDIV                              238737                   0.018802978
+MOD                                 6292                   0.000469403
+SMOD                              442403                    0.03162538
+EXP                              2494858                   0.222661112
+SIGNEXTEND                          4772                    0.00011705
+LT                               1149238                   0.022364441
+GT                                394219                   0.008764318
+SLT                               126136                   0.002898506
+SGT                               208142                   0.004720013
+EQ                              54930121                   1.105623219
+ISZERO                          56882606                   1.114557965
+AND                              3261681                   0.046105844
+OR                                 94635                   0.001383775
+XOR                             51756569                   0.897453051
+NOT                               437876                   0.006683583
+BYTE                              242446                   0.092372084
+SHA3                              716734                   0.265272977
+ADDRESS                            22183                    0.00048228
+BALANCE                           190390                   0.008307074
+ORIGIN                              3502                    0.00007438
+CALLER                            602097                   0.011147836
+CALLVALUE                         676203                   0.012995091
+CALLDATALOAD                     1066064                   0.030578938
+CALLDATASIZE                      689516                   0.015798654
+CALLDATACOPY                       54350                   0.005487266
+CODESIZE                            1573                   0.000059091
+CODECOPY                           82003                   0.007966999
+GASPRICE                           16229                   0.000885571
+EXTCODESIZE                    106309457                  88.978519742
+EXTCODECOPY                       121587                   0.172933041
+BLOCKHASH                           2085                   0.222941668
+COINBASE                               2                    0.00000005
+TIMESTAMP                          48370                    0.00085876
+NUMBER                             48430                   0.000904978
+POP                            125460404                   2.200451175
+MLOAD                           55766905                   1.229437294
+MSTORE                           4594813                   0.129214983
+MSTORE8                           250489                   0.011816676
+SLOAD                            6794914                   1.435629734
+SSTORE                            596067                   0.144754366
+JUMP                             2619323                   0.043351049
+JUMPI                           63863481                   1.367802343
+MSIZE                              95759                   0.001528435
+GAS                             60575913                   1.269821313
+JUMPDEST                        62595150                   1.074131701
+PUSH1                           96344686                   1.692914228
+PUSH2                          118236088                   2.367354882
+PUSH3                             245805                   0.003947624
+PUSH4                            3269868                    0.05065627
+PUSH5                                430                    0.00000793
+PUSH6                               2353                    0.00004779
+PUSH7                               6556                    0.00009999
+PUSH8                              20132                    0.00035208
+PUSH9                                768                      0.000019
+PUSH10                               340                    0.00000695
+PUSH11                               321                     0.0000082
+PUSH12                              3136                   0.000061251
+PUSH13                          51816251                   0.999715267
+PUSH14                               163                    0.00000355
+PUSH15                               158                    0.00000463
+PUSH16                              2660                   0.000069581
+PUSH17                              5939                    0.00007948
+PUSH18                               170                    0.00000264
+PUSH19                                16                   0.000005362
+PUSH20                          53591252                   1.112396437
+PUSH21                             20608                     0.0004007
+PUSH22                               696                     0.0000128
+PUSH23                              1675                    0.00007764
+PUSH24                              2682                    0.00004322
+PUSH25                                53                    0.00000145
+PUSH26                                21                    0.00000036
+PUSH27                                10                    0.00000024
+PUSH28                                 9                    0.00000012
+PUSH29                             45320                   0.001677077
+PUSH31                             87140                   0.001505185
+PUSH32                            923195                   0.018163988
+DUP1                           422942959                   8.092799176
+DUP2                           114470918                   2.143191904
+DUP3                             7176103                    0.13177873
+DUP4                             2141207                   0.033135245
+DUP5                            87927391            1.8333663169999999
+DUP6                             1154796                   0.016687863
+DUP7                              420665                   0.006272107
+DUP8                             1196950                   0.020075547
+DUP9                              677439                   0.010252757
+DUP10                             174601                   0.003104067
+DUP11                              85585                   0.001284524
+DUP12                              41225                     0.0006809
+DUP13                              41132                   0.000617203
+DUP14                              13802                   0.000239351
+DUP15                               9269                    0.00013213
+DUP16                               4361                    0.00005777
+SWAP1                          113402753                   2.193090134
+SWAP2                            3055551                   0.042819777
+SWAP3                             979904                   0.013621105
+SWAP4                             975173                   0.015182876
+SWAP5                           11169517                   0.145733815
+SWAP6                              75609                    0.00107884
+SWAP7                              79684                   0.001242767
+SWAP8                              48248                    0.00069635
+SWAP9                              17025                    0.00027288
+SWAP10                             10792                    0.00015058
+SWAP11                               773                    0.00001367
+SWAP12                               173                    0.00000304
+SWAP13                               347                    0.00000791
+SWAP14                               285                    0.00000685
+SWAP15                                16                    0.00000041
+SWAP16                                 6                     0.0000001
+LOG0                                   1                    0.00000016
+LOG1                              280607                    0.08404046
+LOG2                                2443                    0.00088816
+LOG3                              266364                   0.103154759
+LOG4                                1176                   0.000535451
+CREATE                              3292                   0.060708471
+CALL                            12114597                  73.687256906
+CALLCODE                            8407                   0.263876358
+RETURN                            194006                   0.004009626
+DELEGATECALL                    87434014                 266.492678781
+INVALID                                1                    0.00000001
+SELFDESTRUCT                        4546                   0.004222114
+total_opcode_time(secs) ===> 468.16195445
+
+
+===============================Metric of HostTime=====================
+Host function                             total_spend_time(seconds)
+step                                      0.0
+step_end                                  0.0
+load_account                              62.906461289
+block_hash                                0.222465247
+balance                                   0.003714204
+code                                      161.351183359
+code_hash                                 0.0
+sload                                     1.5271962399999999
+sstore                                    0.214497735
+log                                       0.097302084
+selfdestruct                              5.128730242
+create                                    0.059215549
+call                                      325.53982334
+total host function time(secs) ==> 557.050589289
+
+The trend of time spent on the host function
+step function: 
+0
+
+step_end function: 
+0
+
+env function: 
+0
+
+load_account function: 
+62906461289
+
+block_hash function: 
+222465247
+
+balance function: 
+3714204
+
+code function: 
+161351183359
+
+code_hash function: 
+0
+
+sload function: 
+1527196240
+
+sstore function: 
+214497735
+
+log function: 
+97302084
+
+selfdestruct function: 
+5128730242
+
+create function: 
+59215549
+
+call function: 
+325539823340
+
+
+===============================Metric of CacheDb=====================
+===============================Hit in CacheDb=====================
+CacheDb functions                         Hit times
+hit_in_basic                              288026254
+hit_in_code_by_hash                       170342891
+hit_in_storage                            6426081
+hit_in_block_hash                         44
+total_hit_times  ===>  464795270
+The trend of hit times
+hit in basic function: 
+288026254
+
+hit in code_by_hash function: 
+170342891
+
+hit in storage function: 
+6426081
+
+hit in block_hash function: 
+44
+
+
+===============================Miss in CacheDb=====================
+CacheDb functions                          Miss times
+miss_in_basic                              7417273
+miss_in_code_by_hash                       5690
+miss_in_storage                            124195
+miss_in_block_hash                         2024
+total_miss_times  ===>  7549182
+The trend of miss times
+miss in basic function: 
+7417273
+
+miss in code_by_hash function: 
+5690
+
+miss in storage function: 
+124195
+
+miss in block_hash function: 
+2024
+
+
+===============================Misses penalty in CacheDb=====================
+CacheDb functions                          Miss penalty_time
+miss_penalty_in_basic(secs)                              11.954556052000001
+miss_penalty_in_code_by_hash(secs)                       0.017836938
+miss_penalty_in_storage(secs)                            0.246022622
+miss_penalty_in_block_hash(secs)                         0.221942291
+total_misses_penalty_times(secs)  ===>  12.440357903
+The trend of misses penalty time
+misses penalty time in basic function: 
+11.954556052000001
+
+misses penalty time in code_by_hash function: 
+0.017836938
+
+misses penalty time in storage function: 
+0.246022622
+
+misses penalty time in block_hash function: 
+0.221942291
+
+
+===============================CacheDb size=====================
+CacheDb size in all times 
+1727214671
+
+
+===============================All BlockNumbers=====================
+BlockNumber in all times 
+2422409
+10000000
+
