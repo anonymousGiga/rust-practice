@@ -1,3 +1,4 @@
+extern crate alloc;
 #[cfg(feature = "allocator-api2")]
 use allocator_api2::alloc::{AllocError, Allocator};
 #[cfg(feature = "allocator-api2")]
@@ -9,7 +10,7 @@ use std::slice;
 use std::alloc::Layout;
 use std::sync::atomic::{AtomicUsize, Ordering::SeqCst};
 
-#[cfg(feature = "allocator-api2")]
+//#[cfg(feature = "allocator-api2")]
 pub use allocator_api2::vec::Vec;
 
 static ALLOC: AtomicUsize = AtomicUsize::new(0);

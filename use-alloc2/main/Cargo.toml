@@ -8,4 +8,5 @@ edition = "2021"
 [dependencies]
 hashbrown = "0.14.1"
 alloc = { path = "../alloc", features = ["allocator-api2"] }
+# alloc = { git = "https://github.com/anonymousGiga/use-alloc2", branch = "main", features = ["allocator-api2"], optional = true}
 rand = "0.8.5"

@@ -1,0 +1,13 @@
+[package]
+name = "use-alloc5"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+#alloc = { git = "https://github.com/anonymousGiga/use-alloc2", branch = "main", features = ["allocator-api2"]}
+# alloc = { git = "https://github.com/anonymousGiga/use-alloc2", features = ["allocator-api2"]}
+myalloc = {package = "alloc",  git = "https://github.com/anonymousGiga/use-alloc2", features = ["allocator-api2"]}
+hashbrown = "0.14.1"
+rand = "0.8.5"
